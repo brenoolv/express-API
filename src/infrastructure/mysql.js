@@ -5,7 +5,8 @@ const pool = mysql.createPool({
     ...database,
     waitForConnections: true,
     connectionLimit: 10,
-    decimalNumbers: true
+    decimalNumbers: true,
+    idleTimeout: 10000
 });
 
 async function verificarConexao() {

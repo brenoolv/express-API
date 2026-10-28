@@ -1,4 +1,4 @@
-import { verificarConexao } from "./infrastructure/mysql";
+import { verificarConexao } from "./infrastructure/mysql.js";
 import { port } from './config/env.js'
 import app from "./app.js";
 
