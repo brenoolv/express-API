@@ -1,10 +1,14 @@
-import { verificarConexao } from "./infrastructure/mysql.js";
-import { port } from './config/env.js'
 import app from "./app.js";
+import { port } from "./config/env.js"
+import { verificarConexao } from "./infrastructure/mysql.js";
 
 verificarConexao()
-    .then(() => app.listen(port, () => console.log(`GT Store API disponivel em: https://localhost:${port}`)))
-    .catch((error) => {
-        console.log(`Não foi possivel iniciar a API`, error);
+// .listen serve para verificar se a conexão está realmente funcionando
+
+    .then(() => app.listen(port, '0.0.0.0', () => console.log(`GT Store API disponível em: http://localhost:${port}`)))
+
+// Informar se houver erro e identificar qual erro
+    .catch((erro) => {
+        console.log('Não foi possível iniciar a API', erro);
         process.exitCode = 1;
     });
